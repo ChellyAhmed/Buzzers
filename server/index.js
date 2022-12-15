@@ -23,7 +23,7 @@ const cors = require('cors');
 const corsOptions = {
   origin: ['http://localhost:3000', 'http://192.168.1.109:3000'],
   optionsSuccessStatus: 200,
-    methods: ['GET', 'POST'],
+    methods: ['GET', 'POST', 'PUT' , 'DELETE'],
     allowedHeaders: ['Content-Type']
     
 };
@@ -37,7 +37,7 @@ const io = require('socket.io')(server, {
     cors: {
 
       origin: ['http://localhost:3000','http://192.168.1.109:3000' ],
-      methods: ['GET', 'POST'],
+      methods: ['GET', 'POST', 'PUT' , 'DELETE'],
       allowedHeaders: ['Content-Type']
     }
   });

@@ -28,6 +28,26 @@ function Home() {
         }
     }
 
+    //Reset room:
+    const reset = async () => {
+        try {
+            const response = await fetch('http://localhost:3001/rooms/reset',
+                {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                }
+            );
+            const data = await response.json();
+            console.log(data);
+            setRooms([]);
+        } catch (error) {
+            console.error(error);
+            console.log(error);
+        }
+    }
+
 
     useEffect(() => {
 
@@ -58,6 +78,7 @@ function Home() {
                             }</li>
                         ))}
                     </ul>
+                    <button onClick={reset} >Reset</button>
 
                 </div>
             ))}
