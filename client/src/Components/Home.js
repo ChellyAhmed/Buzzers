@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import io from 'socket.io-client';
-
+import buzz from '../buzz.wav';  
 
 function Home() {
     const [rooms, setRooms] = useState([]);
-
 
     //Connect to socket.io:
     const socket = io('http://localhost:3001');
@@ -26,6 +25,12 @@ function Home() {
             console.error(error);
             console.log(error);
         }
+    }
+
+    //Function to play sound:
+    const playSound = () => {
+        const audio = new Audio(buzz);
+        audio.play();
     }
 
     //Reset room:
@@ -56,7 +61,10 @@ function Home() {
         //Console log hello when receive roomUpdate from socket.io:
         socket.on('roomUpdate', () => {
             fetchRooms();
+            playSound();
         });
+        console.log("s");
+        
 
     }, []);
 
@@ -74,7 +82,7 @@ function Home() {
                     <ul>
                         {room.users.map((user) => (
                             <li key={user.name}>{user.name} : {
-                                user.buzz ? 'Buzzed' : 'Not Buzzed'
+                                user.buzz ? (<><br/><span style={{color: "red", fontSize: "240px"}} >X</span></>) : (<><br/><span style={{color: "white", textShadow: "0px 0px 5px red", fontSize: "240px"}} >X</span></>)
                             }</li>
                         ))}
                     </ul>

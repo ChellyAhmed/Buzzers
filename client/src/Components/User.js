@@ -4,8 +4,8 @@ function User() {
   let name = useParams().name;
   const updateRoom = async () => {
     try {
-        //const response = await fetch(`http://192.168.1.109:3001/rooms/update/${name}`, {
-      const response = await fetch(`http://localhost:3001/rooms/update/${name}`, {
+        const response = await fetch(`http://192.168.1.18:3001/rooms/update/${name}`, {
+      // const response = await fetch(`http://localhost:3001/rooms/update/${name}`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -22,9 +22,9 @@ function User() {
 
   return (
     <div>
-      <h1>User: {name}</h1>
+      <h1 style={{textAlign: "center"}} >User: {name}</h1>
      
-      <button onClick={updateRoom} >update</button>
+      <button className="button" onClick={updateRoom} ></button>
     </div>
   );
 }

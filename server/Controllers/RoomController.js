@@ -31,7 +31,7 @@ const updateRoomAddUser = async (req, res) => {
     await room.save();
     res.json(room);
   }
-  //If user already exists, toggle the value of buzz
+
   // If the user already exists in the room, toggle the value of their "buzz" property
   else {
     // Update the user object in the array with the specified name
